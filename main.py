@@ -13,20 +13,25 @@ def get_book_text(path_to_file: str)-> str:
     return file_contents
 
 def main():
-    print("Welcome to the Book Bot!\n")
+    print("============ BOOKBOT ============")
     # Get the path to the book file
     path_to_file = "./books/frankenstein.txt"
+    print(f"Analyzing book found at {path_to_file}...")
     
     # Get the text of the book
     book_text = get_book_text(path_to_file)
+    
+    print("----------- Word Count ----------")
     num_words = get_num_of_words(book_text)
+    print(f"Found {num_words} total words")
     
-    print(f"{num_words} words found in the document")
-    
+    print("--------- Character Count -------")
     # Get the character count
     char_count = get_char_count(book_text)
-    print("Character count:")
-    print(char_count)
+    for char, count in char_count.items():
+        print(f"'{char}' : {count}")
+        
+    print("============= END ===============")
     
 if __name__ == "__main__":
     main()
