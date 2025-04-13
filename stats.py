@@ -24,4 +24,4 @@ def sort_on(dict):
     """
     A function that takes a dictionary and returns the value of the "count" key
     """
-    return dict("count")
+    return dict['count']
