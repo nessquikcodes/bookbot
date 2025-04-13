@@ -2,6 +2,7 @@
 Book Bot
 This script reads a text file containing a book and provides functions to analyze the text.
 """
+import sys
 from stats import get_num_words, get_char_count, sort_on
 
 def get_book_text(path_to_file: str)-> str:
@@ -14,8 +15,11 @@ def get_book_text(path_to_file: str)-> str:
 
 def main():
     print("============ BOOKBOT ============")
+    if len(sys.argv) < 2:
+        print("PUsage: python3 main.py <path_to_book>")
+        sys.exit(1)
     # Get the path to the book file
-    path_to_file = "./books/frankenstein.txt"
+    path_to_file = sys.argv[1]
     print(f"Analyzing book found at {path_to_file}...")
     
     # Get the text of the book
