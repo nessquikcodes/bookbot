@@ -2,7 +2,7 @@
 Book Bot
 This script reads a text file containing a book and provides functions to analyze the text.
 """
-from stats import get_num_words, get_char_count
+from stats import get_num_words, get_char_count, sort_on
 
 def get_book_text(path_to_file: str)-> str:
     """
@@ -29,7 +29,16 @@ def main():
     print("--------- Character Count -------")
     # Get the character count
     char_count = get_char_count(book_text)
-    print(char_count)        
+    #print(char_count)        
+    sorted_char_count = []
+    for char, count in char_count.items():
+        if char.isalpha():
+            sorted_char_count.append({'char': char, 'count': count})
+    sorted_char_count.sort(reverse=True, key = sort_on)
+    
+    for sorted_char in sorted_char_count:
+        print(f'{sorted_char['char']}: {sorted_char['count']}')
+    
     print("============= END ===============")
     
 if __name__ == "__main__":
